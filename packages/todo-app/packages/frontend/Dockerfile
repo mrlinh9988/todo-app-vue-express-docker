@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:experimental
 # ===== Builder =====
 # ===================
-FROM node:10-alpine AS builder
+FROM node:12.16-alpine AS builder
 
 RUN apk --no-cache add \
   g++ make python git \
@@ -26,4 +26,4 @@ RUN yarn build --mode production
 ## Client Image
 FROM nginx:alpine AS frontend
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /builder/dist/ /usr/share/nginx/html
+COPY --from=builder /builder/dist/ /usr/share/nginx/html 

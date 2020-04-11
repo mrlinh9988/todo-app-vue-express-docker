@@ -4,6 +4,8 @@ WORKDIR /app/
 ADD package.json .
 RUN yarn install --production=true
 ADD src ./src
+RUN ls -alh
 
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "start"]
 EXPOSE 3000
+
